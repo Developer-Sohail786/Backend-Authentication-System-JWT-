@@ -1,14 +1,14 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/user.js"; // ✅ Correct file name
+import User from "../models/user.js"; //
 import { registerSchema, loginSchema } from "../Validation/authValidation.js";
 
-// ✅ Helper function to create JWT tokens
+//  Helper function to create JWT tokens
 export const createToken = (payload, secret, expiry) => {
   return jwt.sign(payload, secret, { expiresIn: expiry });
 };
 
-// ✅ REGISTER USER
+//  REGISTER USER
 export const registerUser = async (req, res) => {
   try {
     console.log("Register Body Received:", req.body);
@@ -36,17 +36,17 @@ export const registerUser = async (req, res) => {
     });
 
     await newUser.save()
-      .then(() => console.log("✅ User saved successfully"))
-      .catch(err => console.log("❌ Error saving user:", err));
+      .then(() => console.log(" User saved successfully"))
+      .catch(err => console.log(" Error saving user:", err));
 
-    res.status(201).json({ message: "User registered successfully ✅" });
+    res.status(201).json({ message: "User registered successfully " });
   } catch (err) {
     console.error("❌ Register error:", err);
     res.status(500).json({ message: "Internal server error", error: err.message });
   }
 };
 
-// ✅ LOGIN USER
+// LOGIN USER
 export const loginUser = async (req, res) => {
   try {
     console.log("Login Body Received:", req.body);
@@ -92,7 +92,7 @@ export const loginUser = async (req, res) => {
       })
       .status(200)
       .json({
-        message: "Login successful ✅",
+        message: "Login successful ",
         accessToken,
         user: {
           id: user._id,
@@ -105,3 +105,4 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
+
